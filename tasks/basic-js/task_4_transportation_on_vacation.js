@@ -1,12 +1,26 @@
 /**
-After a hard quarter in the office you decide to get some rest on a vacation. 
-So you will book a flight for you and your girlfriend and try to leave all the mess behind you.
+После тяжелого квартала в офисе вы решили отдохнуть в отпуске.
+Вы забронируете билет на самолет для себя и своей девушки и постараетесь оставить весь бардак позади.
 
-You will need a rental car in order for you to get around in your vacation. 
-The manager of the car rental makes you some good offers.
+Для передвижения во время отпуска вам понадобится арендованный автомобиль.
+Менеджер проката автомобилей предлагает вам хорошие условия.
 
-Every day you rent the car costs $40. If you rent the car for 7 or more days, you get $50 off your total. 
-Alternatively, if you rent the car for 3 or more days, you get $20 off your total.
+Каждый день аренды автомобиля стоит $40. Если вы арендуете автомобиль на 7 или более дней, вы получаете скидку $50 от общей суммы.
+Или, если вы арендуете автомобиль на 3 или более дней, вы получаете скидку $20 от общей суммы.
 
-Write a code that gives out the total amount for different days(d).
+Напишите код, который вычисляет общую сумму для разного количества дней (d).
  */
+function rentalCarCost(d) {
+  let cost = d * 40;
+    if (d >= 7) {
+        cost -= 50;
+    } else if (d >= 3) {
+        cost -= 20;
+    }
+    return cost;
+}
+
+console.log(rentalCarCost(1));
+console.log(rentalCarCost(3));
+console.log(rentalCarCost(7));
+console.log(rentalCarCost(10));
