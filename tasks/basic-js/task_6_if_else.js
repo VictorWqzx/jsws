@@ -8,3 +8,12 @@
  * Не используйте if, else, ?, тернарный оператор в теле функции.
  *
  */
+function ifElse(condition, thenFn, elseFn) {
+  const fnMap = new Map([
+    [true, thenFn],
+    [false, elseFn]
+  ]);
+  return fnMap.get(Boolean(condition))();
+}
+console.log(ifElse(true, () => 'then', () => 'else')); 
+console.log(ifElse(false, () => 'then', () => 'else'));

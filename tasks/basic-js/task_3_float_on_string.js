@@ -9,3 +9,11 @@
  * getFloatOnString('abcdefgh');      // → NaN
  * getFloatOnString('');              // → NaN
  */
+
+function getFloatOnString(str) {
+  return parseFloat(str);
+}
+console.log(getFloatOnString('4.567abcdefgh')); 
+console.log(getFloatOnString('   10.5kg'));     
+console.log(getFloatOnString('abcdefgh'));      
+console.log(getFloatOnString(''));
