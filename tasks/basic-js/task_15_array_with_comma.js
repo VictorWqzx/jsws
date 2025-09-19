@@ -11,3 +11,8 @@ Note: if this seems too simple for you try the next level
 
 Note2: the input data can be: boolean array, array of objects, array of string arrays, array of number arrays... 
  */
+function printArray(array) {
+    return array.toString();
+}
+console.log(printArray(["h", "e", "l", "l", "o"])); 
+console.log(printArray([1, 2, 3])); 

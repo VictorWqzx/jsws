@@ -1,3 +1,4 @@
+
 /**
 There's no such thing as private properties on a coffeescript object! But, maybe there are?
 
@@ -10,3 +11,18 @@ obj.getSecret() # returns 5
 obj.setSecret(2)
 obj.getSecret() # returns 2
  */
+function createSecretHolder(secret) {
+    let _secret = secret;
+    return {
+        getSecret: function() {
+            return _secret;
+        },
+        setSecret: function(newSecret) {
+            _secret = newSecret;
+        }
+    };
+}
+const obj = createSecretHolder(5);
+console.log(obj.getSecret());
+obj.setSecret(2);
+console.log(obj.getSecret());

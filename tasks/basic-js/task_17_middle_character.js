@@ -9,3 +9,11 @@ Examples:
 "middle" --> "dd"
 "A" --> "A"
  */
+function getMiddle(s) {
+    const len = s.length;
+    return len % 2 === 1 ? s.charAt(len / 2) : s.substr(len / 2 - 1, 2);
+}
+console.log(getMiddle("test"));
+console.log(getMiddle("testing"));
+console.log(getMiddle("cloudy"));
+console.log(getMiddle("A"));
