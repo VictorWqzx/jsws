@@ -10,10 +10,12 @@ Examples:
 "A" --> "A"
  */
 function getMiddle(s) {
-    const len = s.length;
-    return len % 2 === 1 ? s.charAt(len / 2) : s.substr(len / 2 - 1, 2);
+  const len = s.length;
+  const middle = Math.floor(len / 2); 
+  return len % 2 === 1 ? s[middle] : s.slice(middle - 1, middle + 1);
 }
-console.log(getMiddle("test"));
+
+console.log(getMiddle("test"));   
 console.log(getMiddle("testing"));
 console.log(getMiddle("cloudy"));
 console.log(getMiddle("A"));

@@ -7,5 +7,11 @@ function isPalindrome(str) {
     const reversed = cleaned.split('').reverse().join('');
     return cleaned === reversed;
 }
+
+function isPolindrom(str){
+ return str === str.split('').reverse().join('');
+}
+console.log(isPolindrom("racecar"));
+console.log(isPolindrom("hello"));
 console.log(isPalindrome("racecar"));
 console.log(isPalindrome("hello"));
