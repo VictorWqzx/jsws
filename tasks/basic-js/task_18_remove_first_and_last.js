@@ -16,3 +16,15 @@ Examples
 "1"    =>  NULL
 "1,2"  =>  NULL
  */
+function removeChar(str) {
+    const parts = str.split(',');
+    if (parts.length <= 2) {
+        return null;
+    }
+    parts.shift();
+    parts.pop();
+    return parts.join(' ');
+}
+console.log(removeChar("1,2,3"));
+console.log(removeChar("1,2,3,4"));
+console.log(removeChar("1,2,3,4,5"));
