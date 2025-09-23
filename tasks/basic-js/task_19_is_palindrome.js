@@ -14,16 +14,6 @@ const isPalindrome = (str) => {
   return true;
 };
 
-console.log(isPalindrome("racecar")); 
-console.log(isPalindrome("hello"));  
-
-function isPolindrom(str){ //str.split('') все равно создает массив, я говорила про метод с указателями
- return str === str.split('').reverse().join('');
-}
-console.log(isPolindrom("racecar"));
-console.log(isPolindrom("hello"));
-
-
 function isPalindrome(str) {
   let left = 0;
   let right = str.length - 1;
@@ -38,5 +28,17 @@ function isPalindrome(str) {
   return true;
 }
 
-console.log(isPalindrome("racecar"));
+console.log(isPalindrome("racecar")); 
+console.log(isPalindrome("hello"));   
+
+console.log(isPalindrome("racecar")); 
 console.log(isPalindrome("hello"));  
+
+function isPolindrom(str){ //str.split('') все равно создает массив, я говорила про метод с указателями
+ return str === str.split('').reverse().join('');
+}
+console.log(isPolindrom("racecar"));
+console.log(isPolindrom("hello"));
+
+
+
