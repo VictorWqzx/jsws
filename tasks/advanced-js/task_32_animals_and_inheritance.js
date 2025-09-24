@@ -38,3 +38,47 @@ Dogs have an identical introduce/Introduce method as any other animal, but they 
 called greetMaster/GreetMaster which accepts no arguments and returns "Hello (insert_master_name_here)" (of course not the literal string but replace the 
     (insert_master_name_here) with the name of the dog's master).
 */
+function Animal(name, age, legs, species, status) {
+  this.name = name;
+  this.age = age;
+  this.legs = legs;
+  this.species = species;
+  this.status = status;
+}
+
+Animal.prototype.introduce = function() {
+  return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+}
+
+class Shark extends Animal {
+  constructor(name, age, status) {
+    super(name, age, 0, "shark", status);
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, age, status) {
+    super(name, age, 4, "cat", status);
+  }
+  introduce() {
+    return super.introduce() + "  Meow meow!";
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, age, status, master) {
+    super(name, age, 4, "dog", status);
+    this.master = master;
+  }
+  greetMaster() {
+    return `Hello ${this.master}`;
+  }
+}
+
+const sharky = new Shark("Sharky", 3, "Alive and well");
+console.log(sharky.introduce()); 
+const kitty = new Cat("Kitty", 2, "Happy");
+console.log(kitty.introduce()); 
+const doggy = new Dog("Doggy", 4, "Playful", "Alice");
+console.log(doggy.introduce()); 
+console.log(doggy.greetMaster()); 

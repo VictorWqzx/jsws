@@ -24,3 +24,18 @@ isSantaClausable(notSanta); // must return FALSE
 Additional Information on this Topic
 https://en.wikipedia.org/wiki/Duck_typing
 */
+function isSantaClausable(obj) {
+  return typeof obj.sayHoHoHo === 'function' &&
+         typeof obj.distributeGifts === 'function' &&
+         typeof obj.goDownTheChimney === 'function';
+}
+let santa = {
+  sayHoHoHo: function() { console.log('Ho Ho Ho!'); },
+  distributeGifts: function() { console.log('Gifts for all!'); },
+  goDownTheChimney: function() { console.log('*whoosh*'); }
+};
+let notSanta = {
+  sayHoHoHo: function() { console.log('Oink Oink!'); }
+};
+console.log(isSantaClausable(santa));
+console.log(isSantaClausable(notSanta)); 
