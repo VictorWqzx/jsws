@@ -9,3 +9,14 @@ function sum(a, b, c) {
 const addFive = partial(sum, 2, 3);
 addFive(10) → 15  // 2 + 3 + 10
 */
+function partial(fn, ...args) {
+  return function(...restArgs) {
+    return fn(...args, ...restArgs);
+  };
+}
+
+function sum(a, b, c) {
+  return a + b + c;
+}
+const addFive = partial(sum, 2, 3);
+console.log(addFive(10));

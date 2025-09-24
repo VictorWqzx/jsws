@@ -15,3 +15,14 @@ You have to create the function fibonacci that receives n and returns f(n). You 
 
 
 */
+function fibonacci(n) {
+  if (n <= 0) {
+    return 0; // Handle non-positive input
+  } else if (n === 1 || n === 2) {
+    return 1; // Base cases
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2); // Recursive case
+  }
+}
+
+console.log(fibonacci(8));
