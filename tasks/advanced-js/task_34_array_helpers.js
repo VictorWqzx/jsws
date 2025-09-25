@@ -21,3 +21,35 @@ numbers.sum();     // must return 15
 numbers.even();    // must return [2, 4]
 numbers.odd();     // must return [1, 3, 5]
 */
+function square() {
+  return this.map(x => x * x);
+}
+function cube() {
+  return this.map(x => x * x * x);
+}
+function average() {
+  if (this.length === 0) return NaN;
+  return this.reduce((acc, val) => acc + val, 0) / this.length;
+}
+function sum() {
+  return this.reduce((acc, val) => acc + val, 0);
+}
+function even() {
+  return this.filter(x => x % 2 === 0);
+}
+function odd() {
+  return this.filter(x => x % 2 !== 0);
+}
+Array.prototype.square = square;
+Array.prototype.cube = cube;
+Array.prototype.average = average;
+Array.prototype.sum = sum;
+Array.prototype.even = even;
+Array.prototype.odd = odd;
+const numbers = [1, 2, 3, 4, 5];
+console.log(numbers.square());  
+console.log(numbers.cube());     
+console.log(numbers.average());
+console.log(numbers.sum());
+console.log(numbers.even());
+console.log(numbers.odd());

@@ -21,3 +21,13 @@ Listed below are a few articles of interest that may help you complete this Kata
 Stack Overflow - What are getters and setters in ES6?
 getter - Javascript | MDN
 */
+function Cuboid(length, width, height) {
+  this.length = length;
+  this.width = width;
+  this.height = height;
+}
+Object.defineProperty(Cuboid.prototype, 'surfaceArea', {
+  get: function() {
+    return 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
+  }
+}); 
