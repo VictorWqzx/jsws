@@ -46,3 +46,22 @@ console.log(obj.hash('person.name'));
 console.log(obj.hash('person.history.bio'));
 console.log(obj.hash('person.history.homeStreet'));
 console.log(obj.hash('person.animal.pet.needNoseAntEater'));
+
+//reduce
+Object.prototype.hash = function(path) {
+  return path.split('.').reduce((acc, key) => {
+    return acc && acc[key] !== undefined ? acc[key] : undefined;
+  }, this);
+};
+
+var obj = {
+  person: {
+    name: 'joe',
+    history: {
+      hometown: 'bratislava',
+      bio: {
+        funFact: 'I like fishing.'
+      }
+    }
+  }
+};
