@@ -50,26 +50,32 @@ var john = nouveau(Person, 'John', 30); // same result as above
 function nouveau(constructor, ...args) {
   const instance = Object.create(constructor.prototype);
   const result = constructor.apply(instance, args);
-  return (result && (typeof result === 'object' || typeof result === 'function')) ? result : instance;
+    return (result && (typeof result === 'object' || typeof result === 'function')) ? result : instance;
 }
+
 function Person (name, age) {
   this.name = name;
   this.age = age;
 }
+
 Person.prototype.introduce = function(){
-  return 'My name is ' + this.name + ' and I am ' + this.age;
+    return 'My name is ' + this.name + ' and I am ' + this.age;
 }
+
 var john = nouveau(Person, 'John', 30);
 var jack = nouveau(Person, 'Jack', 40);
-console.log( john.introduce() );
-console.log( jack.introduce() );
+
+  console.log( john.introduce() );
+  console.log( jack.introduce() );
+
 function ReturnsArray (name) {
   this.name = name;
-  return [1, 2, 3];
+    return [1, 2, 3];
 } 
 var arr = nouveau(ReturnsArray, 'arr?');
-console.log( arr.name );
-console.log( arr );
+
+  console.log( arr.name );
+  console.log( arr );
 
 // function Cuboid(length, width, height) {
 //   this.length = length;
@@ -95,12 +101,12 @@ class Cube extends Cuboid {
 }
 
 const cuboid = new Cuboid(2, 3, 4);
-console.log(cuboid.surfaceArea);
-console.log(cuboid.volume);
+  console.log(cuboid.surfaceArea);
+  console.log(cuboid.volume);
 
 const cube = new Cube(3);
-console.log(cube.surfaceArea);
-console.log(cube.volume);
-console.log(cube instanceof Cube);
-console.log(cube instanceof Cuboid);
-console.log(cube instanceof Object);
+  console.log(cube.surfaceArea);
+  console.log(cube.volume);
+  console.log(cube instanceof Cube);
+  console.log(cube instanceof Cuboid);
+  console.log(cube instanceof Object);
