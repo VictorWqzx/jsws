@@ -20,3 +20,15 @@ Constraints:
 1 <= s.length <= 105
 s[i] is a printable ascii character.
 */
+function reverseString(s) {
+  let left = 0, right = s.length - 1;
+  while (left < right) {
+    [s[left], s[right]] = [s[right], s[left]];
+    left++;
+    right--;
+  }
+}
+
+
+console.log(reverseString(["h","e","l","l","o"]));
+console.log(reverseString(["H","a","n","n","a","h"]));
