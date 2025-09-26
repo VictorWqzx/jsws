@@ -47,3 +47,60 @@ Your mission: write a function nouveau (that's French for "new") which takes one
 
 var john = nouveau(Person, 'John', 30); // same result as above
 */
+function nouveau(constructor, ...args) {
+  const instance = Object.create(constructor.prototype);
+  const result = constructor.apply(instance, args);
+  return (result && (typeof result === 'object' || typeof result === 'function')) ? result : instance;
+}
+function Person (name, age) {
+  this.name = name;
+  this.age = age;
+}
+Person.prototype.introduce = function(){
+  return 'My name is ' + this.name + ' and I am ' + this.age;
+}
+var john = nouveau(Person, 'John', 30);
+var jack = nouveau(Person, 'Jack', 40);
+console.log( john.introduce() );
+console.log( jack.introduce() );
+function ReturnsArray (name) {
+  this.name = name;
+  return [1, 2, 3];
+} 
+var arr = nouveau(ReturnsArray, 'arr?');
+console.log( arr.name );
+console.log( arr );
+
+// function Cuboid(length, width, height) {
+//   this.length = length;
+//   this.width = width;  
+//   this.height = height;
+// }
+// Object.defineProperty(Cuboid.prototype, 'surfaceArea', {
+//   get: function() {
+//     return 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
+//   }
+// });end of recent edits
+
+Object.defineProperty(Cuboid.prototype, 'volume', {
+  get: function() {
+    return this.length * this.width * this.height;
+  }
+});
+
+class Cube extends Cuboid {
+  constructor(length) {
+    super(length, length, length);
+  }
+}
+
+const cuboid = new Cuboid(2, 3, 4);
+console.log(cuboid.surfaceArea);
+console.log(cuboid.volume);
+
+const cube = new Cube(3);
+console.log(cube.surfaceArea);
+console.log(cube.volume);
+console.log(cube instanceof Cube);
+console.log(cube instanceof Cuboid);
+console.log(cube instanceof Object);

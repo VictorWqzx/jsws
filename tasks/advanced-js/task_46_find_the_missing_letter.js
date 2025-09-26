@@ -16,3 +16,17 @@ Have fun coding it and please don't forget to vote and rank this kata! :-)
 
 I have also created other katas. Take a look if you enjoyed this kata!
 */
+function findMissingLetter(array) {
+  for (let i = 0; i < array.length - 1; i++) {
+    const current = array[i].charCodeAt(0);
+    const next = array[i + 1].charCodeAt(0);
+
+    if (next - current > 1) {
+      return String.fromCharCode(current + 1);
+    }
+  }
+  return null; 
+}
+console.log(findMissingLetter(['a','b','c','d','f']));
+console.log(findMissingLetter(['O','Q','R','S']));
+console.log(findMissingLetter(['m','n','o','p','q','r','t'])); 

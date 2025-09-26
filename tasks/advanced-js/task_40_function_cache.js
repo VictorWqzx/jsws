@@ -10,3 +10,25 @@ cachedFunction('foo', 'bar'); // complex function should be executed
 cachedFunction('foo', 'bar'); // complex function should not be invoked again, instead the cached result should be returned
 cachedFunction('foo', 'baz'); // should be executed, because the method wasn't invoked before with these arguments
 */
+function cache(func) {
+  const cachedResults = new Map();
+    return function(...args) {
+        const key = JSON.stringify(args);
+        if (cachedResults.has(key)) {
+            return cachedResults.get(key);
+        }
+        const result = func(...args);
+        cachedResults.set(key, result);
+        return result;
+    }
+}
+
+const complexFunction = (arg1, arg2) => {
+  console.log('Executing complex function...');
+  return arg1 + arg2;
+};
+const cachedFunction = cache(complexFunction);
+console.log(cachedFunction('foo', 'bar'));
+console.log(cachedFunction('foo', 'bar'));
+console.log(cachedFunction('foo', 'baz'));
+console.log(cachedFunction('foo', 'baz'));
