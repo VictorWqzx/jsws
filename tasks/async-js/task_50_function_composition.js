@@ -12,3 +12,9 @@ compose(f , g)(x)
 => f( g( x ) )
 This kata is not available in haskell; that would be too easy!
 */
+function compose(f, g) {
+   return(...args)=>f(g(...args));
+}
+console.log(compose((x)=>x+1, (x)=>x+2)(3));
+console.log(compose((x)=>x*2, (x)=>x+2)(3));
+console.log(compose((x)=>x*2, (x)=>x+2)(3));

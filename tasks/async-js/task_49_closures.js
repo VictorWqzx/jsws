@@ -28,3 +28,46 @@ Throw an error if name or weight not specified when invoking the constructor.
 Cat.averageWeight() method should give the average weight of all cat instances created with Cat, even after if the instance's properties have changed.
 Must use Object.defineProperty
 */
+var Cat = (function () {
+let catsCount = 0;
+let totalWeight = 0;
+
+function Cat(name, weight) {
+    if (!name || !weight) {
+    throw new Error("Both name and weight must be provided");
+    }
+
+    catsCount++;
+    totalWeight += weight;
+
+    let _weight = weight;
+
+    Object.defineProperty(this, "weight", {
+    get: function () {
+        return _weight;
+    },
+    set: function (newWeight) {
+        totalWeight = totalWeight - _weight + newWeight;
+        _weight = newWeight;
+    }
+    });
+
+    this.name = name;
+}
+
+Cat.averageWeight = function () {
+    return totalWeight / catsCount;
+};
+
+return Cat;
+})();
+
+let garfield = new Cat("garfield", 25);
+console.log(Cat.averageWeight()); 
+
+let felix = new Cat("felix", 15);
+console.log(Cat.averageWeight()); 
+
+felix.weight = 25;
+console.log(felix.weight);        
+console.log(Cat.averageWeight());

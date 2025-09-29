@@ -30,4 +30,46 @@ adderSpy.wasCalledWith(4); // true
 adderSpy.wasCalledWith(0); // false
 adderSpy.returned(8); // true
 adderSpy.returned(0); // false
-*/
+*/ 
+function spyOn(func) {
+    let calls = [];
+    let returns = [];
+
+    function spy(...args) {
+    calls.push(args);
+    try {
+        const result = func.apply(this, args);
+        returns.push(result);
+            return result;
+    } catch (err) {
+        returns.push(err);
+            throw err;
+    }
+    }
+
+    spy.callCount = function () {
+        return calls.length;
+    };
+
+    spy.wasCalledWith = function (val) {
+        return calls.some(args => args.includes(val));
+    };
+
+    spy.returned = function (val) {
+        return returns.includes(val);
+    };
+
+        return spy;
+}
+
+function adder(n1, n2) { return n1 + n2; }
+    var adderSpy = spyOn(adder);
+
+console.log(adderSpy(2, 4)); 
+console.log(adderSpy(3, 5)); 
+
+console.log(adderSpy.callCount());
+console.log(adderSpy.wasCalledWith(4));
+console.log(adderSpy.wasCalledWith(0));
+console.log(adderSpy.returned(8));
+console.log(adderSpy.returned(0));
